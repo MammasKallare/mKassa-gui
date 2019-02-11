@@ -13,8 +13,8 @@ import { MessageService } from './message.service';
 @Injectable()
 export class ProductService {
 
-  private productsUrl = 'http://localhost:3000/product';
-  private transactionsUrl = 'http://localhost:3000/transaction';
+  private productsUrl = 'http://127.0.0.1:3000/product';
+  private transactionsUrl = 'http://127.0.0.1:3000/transaction';
 
   constructor(
   	private http: HttpClient,
@@ -23,6 +23,7 @@ export class ProductService {
   getProducts(): Observable<Product[]> {
   	this.messageService.add('ProductService: fetched products');
   	//return of(PRODUCTS);
+    console.log("Get products")
   	return this.http.get<Product[]>(this.productsUrl);
   }
 

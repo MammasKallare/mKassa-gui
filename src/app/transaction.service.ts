@@ -13,8 +13,8 @@ import { MessageService } from './message.service';
 @Injectable()
 export class TransactionService {
 
-  private productsUrl = 'http://localhost:3000/product';
-  private transactionsUrl = 'http://localhost:3000/transaction';
+  private productsUrl = 'http://127.0.0.1:3000/product';
+  private transactionsUrl = 'http://127.0.0.1:3000/transaction';
 
   constructor(
   	private http: HttpClient) { }

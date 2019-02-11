@@ -37,6 +37,12 @@
 					>
 						Reject transaction
 					</button>
+					<button class="btn btn-success"
+									(click)="print_transaction(transaction)"
+									*ngIf="!transaction.rejected"
+					>
+						Print recipe
+					</button>
 				</div>
 			</div>
 

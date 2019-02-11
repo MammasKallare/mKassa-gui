@@ -60,8 +60,6 @@ export class CartComponent implements OnInit, DoCheck {
   	t.amountPaid = this.sum;
   	t.products = this.products;
 
-    var datas = this.buildReceipt("Kundens Exemplar", t, t.products);
-    this.printReceipt(datas);
   	var r = this.productService.postTransaction(t);
 
   	this.products.splice(0,999);
@@ -202,7 +200,7 @@ export class CartComponent implements OnInit, DoCheck {
   qz.websocket.connect().then(function() {
       //var config = qz.configs.create( { file: "/tmp/test.txt" } );
       var config = qz.configs.create("metapace", {encoding:'UTF-8'});
-      
+
       //var data = ['test\n','etc\n'];
       qz.print(config,data).catch(function(e){ console.error(e); });
     });
