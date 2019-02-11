@@ -13,6 +13,7 @@ export class ProductsComponent implements OnInit {
   products: Product[];
   selectedProduct: Product;
   cart: Product[];
+  categories: String[];
 
   constructor(private productService: ProductService) { }
 
@@ -21,9 +22,6 @@ export class ProductsComponent implements OnInit {
   }
 
   onSelect(product: Product): void {
-  	//this.selectedProduct = product;
-  	
-  	//alert(typeof(this.cart));
   	if (typeof(this.cart) == 'undefined'){
   		this.cart = new Array();
   	}
@@ -43,7 +41,17 @@ export class ProductsComponent implements OnInit {
   getProducts(): void {
   	//this.products = this.productService.getProducts();
   	this.productService.getProducts()
-  		.subscribe(products => this.products = products);
+  		.subscribe(products => {
+        this.products = products;
+        this.categories = this.getCategories();
+      });
+  }
+  getCategories(): String[] {
+    let set = new Set(this.products.map(prod => prod.category))
+    return Array.from(set.values());
+  }
+  getProductsFromCategory(category): Product[] {
+    return this.products.filter(prod => prod.category == category)
   }
 
 }
